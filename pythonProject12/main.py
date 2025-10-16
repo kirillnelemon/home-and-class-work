@@ -1,48 +1,4 @@
-def product_of_list(numbers):
-    result = 1
-    for num in numbers:
-        result *= num
-    return result
-my_list = [1, 2, 3, 4, 5]
-print(f"Произведение элементов списка {my_list} равно {product_of_list(my_list)}")
-def find_min(numbers):
-    if not numbers:
-        return None
-    min_value = numbers[0]
-    for number in numbers:
-        if number < min_value:
-            min_value = number
-    return min_value
-my_list = [10, 5, 20, 3, 15]
-result = find_min(my_list)
-print(f"Минимальное значение в списке: {result}")
-import math
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            return False
-    return True
-def count_prime_numbers(numbers):
-    prime_count = 0
-    for number in numbers:
-        if is_prime(number):
-            prime_count += 1
-    return prime_count
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13]
-result = count_prime_numbers(my_list)
-print(f"Количество простых чисел в списке: {result}")
-def remove_and_count(numbers, number_to_remove):
-    count = 0
-    while number_to_remove in numbers:
-        numbers.remove(number_to_remove)
-        count += 1
-    return count
-my_list = [1, 5, 3, 5, 2, 5, 4]
-number_to_remove = 5
-removed_count = remove_and_count(my_list, number_to_remove)
-print(f"Количество удаленных элементов: {removed_count}")
+
 import random
 left_half = [random.randint(-10, 10) for i in range(10)]
 right_half = [random.randint(-10, 10) for i in range(10)]
