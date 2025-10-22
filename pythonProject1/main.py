@@ -1,20 +1,3 @@
-from random import randint
-N = 15
-mylist = []
-for i in range(N):
-    mylist.append(randint(1, 100))
-print(f"Неотсортированный список: {mylist}")
-i = 0
-while i < N - 1:
-    m = i
-    j = i + 1
-    while j < N:
-        if mylist[j] > mylist[m]:
-            m = j
-        j += 1
-    mylist[i], mylist[m] = mylist[m], mylist[i]
-    i += 1
-print(f"Отсортированный список: {mylist}")
 # import re
 #
 #
