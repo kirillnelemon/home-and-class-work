@@ -1,3 +1,6 @@
+def print_ctoto():
+    print("\"Don't compare yourself with anyone in this worlds...if you do so, you are insulting your self.\"")
+    print("Bill Gates")
 
 import random
 left_half = [random.randint(-10, 10) for i in range(10)]
@@ -8,6 +11,10 @@ print(f"Левая половина (по возрастанию): {left_half}")
 print(f"Правая половина (по убыванию): {right_half}")
 
 import random
+def print_even_number(start,end):
+    for number in range(start,end + 1):
+        if number %2 ==0:
+            print(number)
 
 def merge_lists(list1, list2):
     return list1 + list2
@@ -37,3 +44,17 @@ while max_elements or min_elements:
         alternating_max_min.append(min_elements.pop(0))
 sorted_list = even_elements + alternating_max_min + odd_elements
 print("Отсортированный список:", sorted_list)
+def draw_square(side_legith, symbol, filled):
+    if filled:
+        for _ in range(side_legith):
+            print(symbol * side_legith)
+    else:
+        print(symbol * side_legith)
+        for _ in range(side_legith - 2):
+            print(symbol + ' ' * (side_legith - 2) + symbol)
+        if side_legith > 1:
+            print(symbol * side_legith)
+
+draw_square(5, '*', True)
+print("\n")
+draw_square(5,'#', False)
