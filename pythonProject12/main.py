@@ -1,6 +1,7 @@
 def print_ctoto():
     print("\"Don't compare yourself with anyone in this worlds...if you do so, you are insulting your self.\"")
     print("Bill Gates")
+import math
 
 import random
 left_half = [random.randint(-10, 10) for i in range(10)]
@@ -9,12 +10,27 @@ left_half.sort()
 right_half.sort(reverse=True)
 print(f"Левая половина (по возрастанию): {left_half}")
 print(f"Правая половина (по убыванию): {right_half}")
+def frange(start,stop,step):
+    i=start
+    while i < stop:
+        yield i
+        i += step
+#cоздаем значение аргумента x и функции y1 and y2 по формуле
+x=[i for i in frange(-6.0,1.0,6.0)]
+y1 = [(3+math.sin(i)2)/(1+i2) for i in x]
+y2 =[(1/3)*(i**2)*(math.cos(i)**2) for i in x]
 
 import random
 def print_even_number(start,end):
     for number in range(start,end + 1):
         if number %2 ==0:
             print(number)
+filename='data.txt'
+with open(filename, 'w') as outfile:
+    outfile.write('#значения x, y1 и y2\n')
+    for xi, y1i, y2i in zip(x,y1,y2):
+        outfile.write('%10.5f %10.5f %10.5f\n' % (xi, y1i, y2i))
+outfile.close()
 
 def merge_lists(list1, list2):
     return list1 + list2
@@ -54,7 +70,18 @@ def draw_square(side_legith, symbol, filled):
             print(symbol + ' ' * (side_legith - 2) + symbol)
         if side_legith > 1:
             print(symbol * side_legith)
+result=map(lambda i1,i2: i1+i2, y1, y2)
+y=list(result)
 
 draw_square(5, '*', True)
 print("\n")
-draw_square(5,'#', False)
+draw_square(5,'#', False)with open(filename, 'a') as  outfile:
+    outfile.write('#результат задания')
+    for xi, yi in zip (x,y):
+        outfile.write('%10.5f %10.5f\n' % (xi, yi))
+outfile.close()
+print(y)
+print(x)
+print(xi)
+print(yi)
+#честно я долго пытался разобраться но не смог а когда попросил о помощи мы мне не помогли так что не судите строго ошибку хоть убейте не могу найти
