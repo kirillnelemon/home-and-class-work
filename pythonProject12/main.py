@@ -1,214 +1,41 @@
-import random
+from telegram import Update, ReplyKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
+# Команда /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [["Привет 👋", "Помоги пж ❓"], ["жестко кринжани 😄", "Пока 👋"]]
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+    await update.message.reply_text(
+        "Привет! Я бот с кнопками. Выбери действие:", reply_markup=reply_markup
+    )
 
-class Number:
-    # Заменили init на корректный метод инициализации __init__
-    def __init__(self, size):
-        # Создаем список целых чисел случайным образом (от -10 до 10 для разнообразия)
-        self.numbers = [random.randint(-10, 10) for _ in range(size)]
-        print(f"Исходный список: {self.numbers}")
+# Ответ на текстовые сообщения
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.lower()
 
-    def process_list(self):
-        # Проверка на пустой список перед вычислением среднего
-        if not self.numbers:
-            print("Список пуст.")
-            return []
-
-        # Вычисляем среднее арифметическое всех элементов
-        avg = sum(self.numbers) / len(self.numbers)
-        print(f"Среднее арифметическое: {avg}")
-        list_len = len(self.numbers)
-
-        # Определяем границы для двух третей и одной трети
-        two_thirds_index = (list_len * 2) // 3
-        one_third_index = list_len // 3
-
-        # Переменные для хранения частей списка после обработки
-        part1 = []
-        part2 = []
-
-        if avg > 0:
-            # Разделяем список на части для случая avg > 0
-            part1 = self.numbers[:two_thirds_index]
-            part2 = self.numbers[two_thirds_index:]
-            # Сортируем первые две трети по возрастанию
-            part1.sort()
-            print("Среднее > 0: отсортированы первые 2/3.")
-        else:
-            # Разделяем список на части для случая avg <= 0
-            part1 = self.numbers[:one_third_index]
-            part2 = self.numbers[one_third_index:]
-            # Сортируем только первую треть (если среднее <= 0)
-            part1.sort()
-            print("Среднее <= 0: отсортирована только первая 1/3.")
-
-        # Остальную часть списка располагаем в обратном порядке
-        part2.reverse()
-
-        # Объединяем части обратно
-        self.numbers = part1 + part2
-        return self.numbers
-
-
-# Пример использования Задания 1
-print("--- Задание 1 ---")
-# Создадим объект с 9 элементами для удобства деления на 3 части
-num_instance = Number(9)
-processed_list = num_instance.process_list()
-print(f"Обработанный список: {processed_list}")
-
-import sys
-
-# Список для хранения 10 оценок студента (от 1 до 12)
-# Инициализируем пустым списком, пользователь введет оценки при первом запуске
-grades = []
-
-
-def input_grades():
-    """Пользовательский ввод 10 оценок."""
-    global grades
-    grades = []
-    print("Пожалуйста, введите 10 оценок от 1 до 12.")
-    for i in range(10):
-        while True:
-            try:
-                # Ввод и валидация оценки
-                grade = int(input(f"Введите оценку {i + 1}: "))
-                if 1 <= grade <= 12:
-                    grades.append(grade)
-                    break
-                else:
-                    print("Оценка должна быть от 1 до 12. Попробуйте снова.")
-            except ValueError:
-                print("Некорректный ввод. Введите целое число.")
-    print("Оценки успешно добавлены.")
-
-
-def display_grades():
-    """Вывод содержимого списка оценок."""
-    if not grades:
-        print("Список оценок пуст. Сначала введите оценки (опция 1).")
+    if "привет" in text:
+        await update.message.reply_text("hi i big brrrr 😎(❁´◡`❁)")
+    elif "помоги пж" in text:
+        await update.message.reply_text("Вот что я могу:\n- Привет 👋\n- жестко кринжани 😄 \n- Прощай 👋")
+    elif "жестко кринжани 😄" in text:
+        await update.message.reply_text("искал биг бррр сгорел шрек")
+    elif "пока" in text:
+        await update.message.reply_text("Ну и пошёл нафиг! 👋 Не в обиду,мы ещё свидимся!")
     else:
-        print("Текущие оценки студента:", grades)
+        await update.message.reply_text("ТЕБЕ ЧЁ НАДОО 😡😡😡")
 
+# Основная функция запуска бота
+def main():
+    TOKEN = "8225107561:AAE9eBt71NU9lQg72Pgw-dYh3_lPX1oZWGk"
 
-def retake_exam():
-    """Пересдача экзамена: изменение оценки по номеру элемента списка."""
-    if not grades:
-        print("Список оценок пуст. Сначала введите оценки (опция 1).")
-        return
+    app = ApplicationBuilder().token(TOKEN).build()
 
-    display_grades()
-    while True:
-        try:
-            # Запрос номера элемента списка (от 1 до 10 для удобства пользователя)
-            index = int(input("Введите номер оценки для замены (от 1 до 10): "))
-            if 1 <= index <= 10:
-                while True:
-                    try:
-                        # Запрос новой оценки и валидация
-                        new_grade = int(input("Введите новую оценку (от 1 до 12): "))
-                        if 1 <= new_grade <= 12:
-                            # Обновление оценки (индексы в Python с 0)
-                            grades[index - 1] = new_grade
-                            print(f"Оценка номер {index} изменена на {new_grade}.")
-                            return
-                        else:
-                            print("Оценка должна быть от 1 до 12. Попробуйте снова.")
-                    except ValueError:
-                        print("Некорректный ввод новой оценки.")
-            else:
-                print("Некорректный номер оценки. Введите число от 1 до 10.")
-        except ValueError:
-            print("Некорректный ввод номера.")
+    # Обработчики
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
+    print("Бот запущен...")
+    app.run_polling()
 
-def check_scholarship():
-    """Проверка условия стипендии (средний балл не ниже 10.7)."""
-    if not grades:
-        print("Список оценок пуст. Сначала введите оценки (опция 1).")
-        return
-
-    # Расчет среднего балла
-    average_grade = sum(grades) / len(grades)
-    print(f"Средний балл студента: {average_grade:.2f}.")  # Форматированный вывод
-    if average_grade >= 10.7:
-        print("🎉 Стипендия выходит!")
-    else:
-        print("❌ Стипендия не выходит.")
-
-
-def sort_grades():
-    """Вывод отсортированного списка оценок."""
-    if not grades:
-        print("Список оценок пуст. Сначала введите оценки (опция 1).")
-        return
-
-    while True:
-        # Меню сортировки
-        choice = input("Выберите тип сортировки (1 - по возрастанию, 2 - по убыванию): ")
-        if choice == '1':
-            print("Оценки по возрастанию:", sorted(grades))
-            return
-        elif choice == '2':
-            print("Оценки по убыванию:", sorted(grades, reverse=True))
-            return
-        else:
-            print("Некорректный выбор. Введите '1' или '2'.")
-
-
-def main_menu():
-    """Главное меню программы."""
-    while True:
-        print("\n--- Меню программы «Успеваемость» ---")
-        print("1. Ввод оценок (обязательно перед использованием других функций)")
-        print("2. Вывод оценок")
-        print("3. Пересдача экзамена (изменить оценку)")
-        print("4. Проверить стипендию")
-        print("5. Вывод отсортированного списка оценок")
-        print("6. Выход из программы")
-        print("---------------------------------------")
-
-        # FIX 1: Переменная choice должна быть определена до использования в if/elif
-        choice = input("Выберите пункт меню (1-6): ")
-
-        # FIX 2: Условия должны использовать сравнение (==), а не присваивание (=)
-        if choice == '1':
-            input_grades()
-        elif choice == '2':
-            display_grades()
-        elif choice == '3':
-            retake_exam()
-        elif choice == '4':
-            check_scholarship()
-        elif choice == '5':
-            sort_grades()
-        elif choice == '6':
-            print("Выход из программы. До свидания!")
-            sys.exit()  # Используем sys.exit для чистого выхода
-        else:
-            print("Некорректный выбор. Пожалуйста, введите число от 1 до 6.")
-
-
-# FIX 3: Исправлено условие запуска скрипта: "__main__" вместо "main"
 if __name__ == "__main__":
-    main_menu()
-
-
-    def improved_bubble_sort(arr):
-        n = len(arr)
-        for i in range(n):
-            swapped = False
-            for j in range(0, n - i - 1):
-                if arr[j] > arr[j + 1]:
-                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                    swapped = True
-            if not swapped:
-                break
-        return arr
-
-
-    # Пример использования
-    my_list = [64, 34, 25, 12, 22, 11, 90]
-    sorted_list = improved_bubble_sort(my_list)
-    print("Отсортированный список:", sorted_list)
+    main()
