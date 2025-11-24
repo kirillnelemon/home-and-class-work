@@ -115,3 +115,46 @@
 #         self.rate = self.RATES["Senior"] + self.senior_rises
 # def into(self):
 #     return f"{self.name} {self.hour}ч. {self.salary} тгр."
+
+#Практика 7
+#задание 1
+# class Animal:
+#     def __init__(self, nickname):
+#
+#         self.nickname = nickname
+#
+#     def __str__(self):
+#
+#         return f"Это животное  {self.nickname}"
+#
+#
+# class Cat(Animal):
+#     def voice(self):
+#
+#         print(f"{self.nickname} говорит мяу!")
+#
+#     def run(self):
+#
+#         print("Побежали!")
+#
+# class Parrot(Animal):
+#     def voice(self):
+#
+#         print(f"{self.nickname} говорит чик чирик!")
+#
+#     def fly(self):
+#
+#         print("Полетели!")
+#
+# if __name__ == "__main__":
+#
+#     my_cat = Cat("Котэ")
+#     print(my_cat)
+#     my_cat.voice()
+#     my_cat.run()
+#
+#     my_parrot = Parrot("птица")
+#     print(my_parrot)
+#     my_parrot.voice()
+#     my_parrot.fly()
+#задание 2
