@@ -1,4 +1,106 @@
-# #задание 1
+#практика 5
+#задание 1
+# def shell_sort(data):
+#     n=len(data)
+#     gap = n // 2
+#     while gap > 0:
+#         for i in range(gap,n):
+#             temp = data [i]
+#             j = i
+#             while j >= gap and data [j - gap] > temp:
+#                 data[j] = data[j - gap]
+#                 j -= gap
+#             data[j] = temp
+#         gap //= 2
+#     return  data
+#задание 2
+# def heapify(arr, n, i):
+#     largest = i
+#     l = 2 * i + 1
+#     r = 2 * i + 2
+#     if l < n and arr[l] > arr[largest]:
+#         largest = l
+#     if r < n and arr[r] > arr[largest]:
+#         largest = r
+#     if largest != i:
+#         arr[i], arr[largest] = arr[largest], arr[i]
+#         heapify(arr, n, largest)
+# def heap_sort(arr):
+#     n = len(arr)
+#     for i in range(n // 2 - 1, -1, -1):
+#         heapify(arr, n, i)
+#     for i in range(n - 1, 0, -1):
+#         arr[i], arr[0] = arr[0], arr[i]
+#         heapify(arr, i, 0)
+#задание 3
+# my_list = [1, 9, 2 ,6 ,24, 56, 15, 11, 22]
+# my_list.sort()
+# print(my_list)
+#Задание 4
+
+def flip(arr, k):
+    """
+    Вспомогательная функция: меняет порядок первых k элементов списка на обратный.
+    Это наша единственная разрешенная операция с лопаткой.
+    """
+    # top_part - это элементы стопки над лопаткой
+    top_part = arr[:k]
+    top_part.reverse()
+    arr[:k] = top_part
+
+    # Для отладки и понимания процесса
+    # print(f"  > Flip (k={k}): {arr}")
+
+
+def pancake_sort(arr):
+    """
+    Основная функция пирамидальной сортировки.
+    """
+    n = len(arr)
+    print(f"Начальная стопка: {arr}\n")
+
+    # current_size - это длина неотсортированной части стопки
+    for current_size in range(n, 1, -1):
+        # 1. Находим индекс максимального элемента в текущем диапазоне
+        max_val = max(arr[:current_size])
+        max_idx = arr.index(max_val)
+
+        # print(f"--- Ищем максимум {max_val} в диапазоне {current_size} ---")
+
+        # 2. Если максимальный элемент уже на своем месте (внизу текущего диапазона),
+        #    просто переходим к следующему шагу.
+        if max_idx == current_size - 1:
+            continue
+
+        # 3. Поднимаем максимальный элемент наверх (если он еще не там)
+        if max_idx != 0:
+            # print(f"  Поднимаем {max_val} наверх (k={max_idx + 1})")
+            flip(arr, max_idx + 1)
+
+        # 4. Опускаем максимальный элемент на его итоговое место внизу
+        # print(f"  Опускаем {max_val} на итоговое место (k={current_size})")
+        flip(arr, current_size)
+
+        # print("-" * 30)
+
+    return arr
+
+
+# --- Пример использования ---
+
+# Задаем стопку оладий различными радиусами
+# (например, 6 - самый большой, 1 - самый маленький)
+stack =
+
+sorted_stack = pancake_sort(stack)
+
+print("\n--- Финальный результат ---")
+print(f"Отсортированная стопка (по убыванию радиуса снизу вверх): {sorted_stack}")
+# Ожидаемый результат: 
+
+
+#практика 6
+#задание 1
 # import random
 #
 # spisok = [random.randint(1, 100) for i in range(10)]
