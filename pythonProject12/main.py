@@ -1,61 +1,79 @@
-import pygame
-from settings import *
-from sudoku.generator import generate_sudoku
-from sudoku.board import Board
-from ui.grid import draw_grid
-from ui.cell import draw_cells, init
-from ui.button import Button
+import tkinter as tk
+from tkinter import messagebox
 
-pygame.init()
-screen = pygame.display.set_mode((WINDOW_SIZE, SCREEN_HEIGHT))
-pygame.display.set_caption("Sudoku")
-clock = pygame.time.Clock()
+ENG_slova = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ENG_slova2 = ENG_slova.lower()
+RUS_slova = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+RUS_slova2 = RUS_slova.lower()
 
-restart_button = Button( #Кнопка рестарта игры
-    WINDOW_SIZE // 2 - 60,
-    WINDOW_SIZE + 20,
-    120,
-    40,
-    "Restart")
+ALPHABETS = [ENG_slova, ENG_slova2, RUS_slova, RUS_slova2]
 
-def new_game():
-    grid = generate_sudoku()
-    return Board(grid)
 
-board = new_game()
+def char_info(ch):
+    for alpha in ALPHABETS:
+        if ch in alpha:
+            return alpha, alpha.index(ch)
+    return None, -1
 
-init()
 
-board = Board(generate_sudoku())
+def vigenere(text, key, decrypt=False):
+    shifts = []
+    for k in key:
+        alpha, idx = char_info(k)
+        if alpha:
+            shifts.append(idx)
+    if not shifts:
+        return text
 
-running = True
-while running:
-    clock.tick(FPS)
-    screen.fill(WHITE)
+    res = []
+    j = 0
+    for ch in text:
+        alpha, idx = char_info(ch)
+        if alpha:
+            shift = shifts[j % len(shifts)]
+            if decrypt:
+                shift = -shift
+            res.append(alpha[(idx + shift) % len(alpha)])
+            j += 1
+        else:
+            res.append(ch)
+    return "".join(res)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
 
-        if event.type == pygame.KEYDOWN:
-            if pygame.K_1 <= event.key <= pygame.K_9:
-                board.place_number(event.key - pygame.K_0)
+def process(decrypt=False):
+    text = text_input.get("1.0", tk.END).strip()
+    key = key_input.get().strip()
+    if not key:
+        messagebox.showwarning("Внимание", "Пожалуйста, введите ключ!")
+        return
+    result = vigenere(text, key, decrypt=decrypt)
+    text_output.delete("1.0", tk.END)
+    text_output.insert(tk.END, result)
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            pos = pygame.mouse.get_pos()
 
-            if restart_button.clicked(pos):
-                board = new_game()
-                continue
+root = tk.Tk()
+root.title("Шифр Виженера")
+root.geometry("500x500")
+root.resizable(False, False)
 
-            if pos[1] < WINDOW_SIZE:
-                x, y = pos
-                board.select(y // CELL_SIZE, x // CELL_SIZE)
+tk.Label(root, text="Исходный текст:").pack(pady=(10, 0), anchor="w", padx=20)
+text_input = tk.Text(root, height=8, width=55)
+text_input.pack(pady=5, padx=20)
 
-    screen.fill(WHITE) # Фон экрана
-    draw_cells(screen, board) # Клетки с цифрами
-    draw_grid(screen) # Сетка
-    restart_button.draw(screen) # Кнопка рестарта игры
-    pygame.display.flip() # Обновление экрана
+tk.Label(root, text="Ключ:").pack(pady=(10, 0), anchor="w", padx=20)
+key_input = tk.Entry(root, width=55)
+key_input.pack(pady=5, padx=20)
 
-pygame.quit()
+btn_frame = tk.Frame(root)
+btn_frame.pack(pady=10)
+
+tk.Button(btn_frame, text="Зашифровать",
+          width=15, command=lambda: process(False)).grid(row=0, column=0, padx=10)
+tk.Button(btn_frame, text="Расшифровать",
+          width=15, command=lambda: process(True)).grid(row=0, column=1, padx=10)
+
+tk.Label(root, text="Результат:").pack(pady=(10, 0), anchor="w", padx=20)
+text_output = tk.Text(root, height=8, width=55)
+text_output.pack(pady=5, padx=20)
+
+root.mainloop()

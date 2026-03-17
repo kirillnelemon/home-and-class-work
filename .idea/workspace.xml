@@ -4,45 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fa816d3-dbf8-4990-beb4-075fa0d14220" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2048/py2048_classes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2048/ty2048_pygame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject1/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject1/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/.idea/pythonProject12.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/Hero.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/enemy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/game.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/heroes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/log.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject12/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/pythonProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/fo_pepe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/pythonProject3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonProject12/pythonProject3/main.py" beforeDir="false" />
-    </list>
+    <list default="true" id="9fa816d3-dbf8-4990-beb4-075fa0d14220" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,17 +34,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.py.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/1/OneDrive/Документы/GitHub/home-and-class-work&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "Python.main.py.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/1/OneDrive/Документы/GitHub/home-and-class-work/pythonProject12"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\1\OneDrive\Документы\GitHub\home-and-class-work\pythonProject12" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
