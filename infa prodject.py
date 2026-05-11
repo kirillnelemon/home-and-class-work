@@ -37,7 +37,7 @@ lable_enter_colvo.grid(row=3, column=0)
 textfromcolvo = Text(window, height=1, width=20)
 textfromcolvo.grid(row=4, column=0)
 
-# Кнопка (привязываем функцию calculate)
+# Кнопка 
 button = Button(text='расчитать', command=calculate)
 button.grid(row=5, column=0)
 
