@@ -4,11 +4,9 @@ from tkinter import *
 
 def calculate():
     try:
-        # Считываем данные из текстовых полей
         ves = float(textfromves.get("1.0", END).strip())
         povtoreniya = float(textfromcolvo.get("1.0", END).strip())
 
-        # Твоя формула: вес * (повторения / 30 + 1)
         result = ves * (povtoreniya / 30 + 1)
 
         # Выводим результат
