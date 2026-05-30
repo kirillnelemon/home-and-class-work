@@ -4,11 +4,9 @@ from tkinter import *
 
 def calculate():
     try:
-        # Считываем данные из текстовых полей
         ves = float(textfromves.get("1.0", END).strip())
         povtoreniya = float(textfromcolvo.get("1.0", END).strip())
 
-        # Твоя формула: вес * (повторения / 30 + 1)
         result = ves * (povtoreniya / 30 + 1)
 
         # Выводим результат
@@ -37,7 +35,7 @@ lable_enter_colvo.grid(row=3, column=0)
 textfromcolvo = Text(window, height=1, width=20)
 textfromcolvo.grid(row=4, column=0)
 
-# Кнопка (привязываем функцию calculate)
+# Кнопка 
 button = Button(text='расчитать', command=calculate)
 button.grid(row=5, column=0)
 
